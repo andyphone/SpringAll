@@ -24,6 +24,8 @@ public class MyAuthenticationFailureHandler implements AuthenticationFailureHand
                                         AuthenticationException exception) throws IOException {
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         response.setContentType("application/json;charset=utf-8");
-        response.getWriter().write(mapper.writeValueAsString(exception.getMessage()));
+        String message = exception.getMessage();
+        System.err.println("AuthenticationFailure_message: "+message);
+        response.getWriter().write(mapper.writeValueAsString(message));
     }
 }

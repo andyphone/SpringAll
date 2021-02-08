@@ -14,6 +14,7 @@ public class TestController {
 
     @GetMapping("index")
     public Object index(Authentication authentication) {
+        System.err.println("---------------------index---------------------");
         // return SecurityContextHolder.getContext().getAuthentication();
         return authentication;
     }

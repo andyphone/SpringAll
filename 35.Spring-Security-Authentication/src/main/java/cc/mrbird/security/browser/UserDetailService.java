@@ -18,12 +18,13 @@ public class UserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.err.println("----------------loadUserByUsername---------------------");
         // 模拟一个用户，替代数据库获取逻辑
         MyUser user = new MyUser();
         user.setUserName(username);
         user.setPassword(this.passwordEncoder.encode("123456"));
         // 输出加密后的密码
-        System.out.println(user.getPassword());
+        System.err.println(user.getPassword());
 
         return new User(username, user.getPassword(), user.isEnabled(),
                 user.isAccountNonExpired(), user.isCredentialsNonExpired(),

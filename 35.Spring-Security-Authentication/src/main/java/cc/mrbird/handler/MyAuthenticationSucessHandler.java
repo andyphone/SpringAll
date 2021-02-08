@@ -20,21 +20,29 @@ import java.io.IOException;
 @Component
 public class MyAuthenticationSucessHandler implements AuthenticationSuccessHandler {
 
-    // private RequestCache requestCache = new HttpSessionRequestCache();
+     private RequestCache requestCache = new HttpSessionRequestCache();
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
     //
-    // @Autowired
-    // private ObjectMapper mapper;
+//     @Autowired
+//     private ObjectMapper mapper;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException {
-        // response.setContentType("application/json;charset=utf-8");
-        // response.getWriter().write(mapper.writeValueAsString(authentication));
-        // SavedRequest savedRequest = requestCache.getRequest(request, response);
-        // System.out.println(savedRequest.getRedirectUrl());
-        // redirectStrategy.sendRedirect(request, response, savedRequest.getRedirectUrl());
+
+//        System.err.println("---------------onAuthenticationSuccess---------------");
+
+        //返回json(适合前后端分离)
+//         response.setContentType("application/json;charset=utf-8");
+//         response.getWriter().write(mapper.writeValueAsString(authentication));
+
+        //返回前一个页面
+//         SavedRequest savedRequest = requestCache.getRequest(request, response);
+//         System.out.println(savedRequest.getRedirectUrl());
+//         redirectStrategy.sendRedirect(request, response, savedRequest.getRedirectUrl());
+
+        //返回index.html
         redirectStrategy.sendRedirect(request, response, "/index");
     }
 }
