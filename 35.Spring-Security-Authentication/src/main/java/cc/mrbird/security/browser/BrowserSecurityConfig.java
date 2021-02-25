@@ -30,7 +30,10 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin() // 表单登录
                 // http.httpBasic() // HTTP Basic
                 .loginProcessingUrl("/login") // 登录页登入后，开始准备接下来流程的映射方法loadUserByUsername() ：设定处理表单登录 URL  self-note: 前端 action="/login"
-                .loginPage("/authentication/require") // 未登录访问除"/login", "/login.html"之外所有的URL，都会跳转到该映射方法
+
+                .loginPage("/authentication/require") //一般是拦截后返回的页面URL，此处是跳转到一个controller的接口，继续分析是返回页面还是返回json;
+                                                    // 拦截内容：未登录访问，即除"/login", "/login.html"之外所有的URL，
+                                                    // 都会跳转到该映射方法
 
                 .successHandler(authenticationSucessHandler) // 处理登录成功
                 .failureHandler(authenticationFailureHandler) // 处理登录失败
